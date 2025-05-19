@@ -10,7 +10,7 @@ import pickle
 ### Preprocess dataset
 We need to make sure to have our dataset in the right format. METK uses the convention from cbiportal as the standard way to store the data. If your input dataset is not in the cbio format, you need to have at least the following minimal data schema (columns). 
 
->**⚠️ Warning:** Your data has to be 0-based following cbioportal convention, if it is not, the results will not be meaningful. 
+>**⚠️ Warning:** Your data has to be 0-based following cbioportal convention, if it is not, the results will not be correct. 
 
 ```python 
 # Define table schema
