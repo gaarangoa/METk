@@ -109,7 +109,7 @@ class FeatureExtractor():
             A data frame with the CHIP classifier fields. 
         '''
 
-        self.deepgesture_model = kwargs.get('deepgesture_model', 'mutation_model.bin')
+        self.deepgesture_model = kwargs.get('mutation_model', 'mutation_model.bin')
 
         self.db = db
         self.reference_genome = reference_genome
@@ -221,34 +221,18 @@ class FeatureExtractor():
         self.gene_feature_names = ["ge_{}".format(i) for i in range(self.gene_features.shape[1])]
 
         logger.info('Step 4: Feature dimension: {}'.format(self.gene_features.shape))
-        
-    def compute_gh_like_score(self, table):
-        # TODO: Deprecated
-        # logger.info('Step 5: Extracting CHIP driver gene score ...')
-        # imitator, enc = pickle.load(open(self.imitator_model, 'rb'))
-        # gene_onehot_emb = enc.transform(np.array(table.Hugo_Symbol.fillna('')).reshape(-1, 1)).toarray()
-        
-        # y_prob = np.array(imitator.predict_proba(gene_onehot_emb))
-        # iscore = y_prob[:, 0]
-        # self.gh_like_score = np.reshape(iscore, (iscore.shape[0], 1))
-        
-        # logger.info('Step 5: Feature dimension: {}'.format(self.gh_like_score.shape))
-
-        return None 
 
     def extract_features(self, table): 
         self.compute_deepgesture_embeddings(table)
         self.compute_snpeff_features()
         self.compute_dbnsfp_features()
         self.compute_gene_embeddings(table)
-        self.compute_gh_like_score(table)
         
         self.dataset = np.array(
             np.concatenate([
                 self.deepgesture_features, 
                 self.gene_features, 
-                self.snpeff_features, 
-                self.gh_like_score, 
+                self.snpeff_features,
                 self.snpsift_features
             ], axis=1),
             dtype=float
