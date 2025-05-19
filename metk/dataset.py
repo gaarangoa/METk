@@ -1,4 +1,3 @@
-from judge.utils import prog
 from rich import print
 import os
 import pandas as pd
