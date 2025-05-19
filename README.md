@@ -2,19 +2,15 @@
 
 ## Usage
 ```python
-from metk.extractor import FeatureExtractor
 from metk.dataset import read, Dataset
-```
-
-### Import relevant functions
-```python
-from metk.extractor.extractor import FeatureExtractor
-from metk.dataset import read
-from metk.dataset.dataset import Dataset
+from metk.extractor import FeatureExtractor
+import pickle
 ```
 
 ### Preprocess dataset
-We need to make sure to have our dataset in the right format. METK uses the convention from cbiportal as the standard way to store the data. If your input dataset is not in the cbio format, you need to have at least the following minimal data schema (columns)
+We need to make sure to have our dataset in the right format. METK uses the convention from cbiportal as the standard way to store the data. If your input dataset is not in the cbio format, you need to have at least the following minimal data schema (columns). 
+
+>**⚠️ Warning:** Your data has to be 0-based following cbioportal convention, if it is not, the results will not be meaningful. 
 
 ```python 
 # Define table schema
@@ -32,7 +28,7 @@ schema = {
 
 # Load data into a dataframe
 table = read(
-    './example/brca_tcga.mutations.txt', 
+    '../data/brca/brca_tcga.mutations.txt', 
     sep='\t', 
     schema=schema, 
     reference_genome='GRCh37',
@@ -53,10 +49,11 @@ Now that  we have cleaned and formatted the data we are ready to extract all the
 ```python
 mutation_enrichment = FeatureExtractor(
     reference_genome = 'GRCh37',
-    db = '/scratch/datasets/chip/',
+    db = '/mnt/METk/',
     identifier = 'table_unique_id_',
     variant_types = 'INS,DEL,SNP',
-    output_path = "{}/".format('./example/deepgesture/'),
+    output_path = '../data/brca/',
+    mutation_model = 'mutation_model.bin'
 )
 mutation_enrichment.extract_features(table)
 ```
@@ -69,7 +66,6 @@ data by loading this file. There are three objects:
 * feature_names: The name of the extracted features: 
     * dg_*: deepgesture embeddings
     * ge_*: Embeddings from the gene name
-    * ch_score: Score that defines whether the mutation is placed in a known CHIP gene. 
     * dbNSFP: Scores from the dbNSFP database
     * other: SnpEff extracted scores
 * table: This is your input table 
@@ -77,7 +73,7 @@ data by loading this file. There are three objects:
 **Recommended** you can create a master table with all the vectors and input information as follows: 
 ```python
 import pickle
-[vectors, feature_names, metadata] = pickle.load(open('./example/deepgesture/mutation_features.pk', 'rb'))
+[vectors, feature_names, metadata] = pickle.load(open('../data/brca/mutation_features.pk', 'rb'))
 
 vectors = pd.DataFrame(vectors, columns = feature_names)
 data = pd.concat([metadata, vectors], axis=1)

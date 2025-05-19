@@ -241,7 +241,7 @@ class FeatureExtractor():
         pickle.dump(
             [
                 self.dataset, 
-                self.deepgesture_names + self.gene_feature_names  + self.snpeff_names + ['ch_score'] + self.snpsift_names, 
+                self.deepgesture_names + self.gene_feature_names  + self.snpeff_names + self.snpsift_names, 
                 table
             ], 
             open("{}/mutation_features.pk".format(self.output_path), 'wb'), 
