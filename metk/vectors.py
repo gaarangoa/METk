@@ -22,7 +22,7 @@ def compute_embeddings(input_file='', outdir='', model='', model_name='model', p
         except:
             pass
 
-        wv_file = '{}/{}{}.wv'.format(outdir, prefix, model_name)
+        wv_file = '{}/{}embeddings.wv'.format(outdir, prefix)
         logger.info('Processing {}'.format(input_file))
         logger.info('Text model: {}'.format(model))
         logger.info('Storing embeddings to {}'.format(wv_file))
