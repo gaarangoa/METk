@@ -109,7 +109,7 @@ class FeatureExtractor():
             A data frame with the CHIP classifier fields. 
         '''
 
-        self.deepgesture_model = kwargs.get('deepgesture_model', 'somatic_germline.noLabels.last.bin:MIX_128')
+        self.deepgesture_model = kwargs.get('deepgesture_model', 'mutation_model.bin')
 
         self.db = db
         self.reference_genome = reference_genome
@@ -123,8 +123,7 @@ class FeatureExtractor():
             '{}/snpEff_5_0/db/GRCh37/dbNSFP/dbNSFP4.1a.txt.gz'.format(db), 
             '{}/snpEff_5_0/db/GRCh38/dbNSFP/dbNSFP4.1a.txt.gz'.format(db)
         ]
-        self.gene_embeddings_model = '{}/gene_embeddings/genes.tcga.model.d8.tsv'.format(db)
-        self.imitator_model = '{}/imitator/ImitatorModel.pk'.format(db)
+        self.gene_embeddings_model = '{}/starspace/genes.tcga.model.d8.tsv'.format(db)
 
         self.run_deepgesture = run_deepgesture
         self.run_snpeff = run_snpeff
@@ -137,7 +136,7 @@ class FeatureExtractor():
         
         dg = Embedder(
             path_to_reference_genomes='{}/reference_genome/'.format(self.db),
-            path_to_trained_embeddings='{}/deepgesture_embeddings/'.format(self.db),
+            path_to_trained_embeddings='{}/starspace/'.format(self.db),
             pretrained_embeddings=self.deepgesture_model
         )
         

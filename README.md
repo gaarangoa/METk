@@ -8,9 +8,9 @@ from metk.dataset import read, Dataset
 
 ### Import relevant functions
 ```python
-from judge.extractor.extractor import FeatureExtractor
-from judge.dataset import read
-from judge.dataset.dataset import Dataset
+from metk.extractor.extractor import FeatureExtractor
+from metk.dataset import read
+from metk.dataset.dataset import Dataset
 ```
 
 ### Preprocess dataset
