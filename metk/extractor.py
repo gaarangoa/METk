@@ -96,7 +96,7 @@ class FeatureExtractor():
         ''' 
         Feature extractor for CHIP classifier:
         Inputs: 
-            db: path where the databases are stored ('/scratch/kmvr819/data/chip/')
+            db: path where the databases are stored ('/data/chip/')
             reference_genome: genome reference to use
             identifier: Unique ID in the table to extract the features. 
             variant_types: names of the variant types to consider. As the names may change depending on the 
