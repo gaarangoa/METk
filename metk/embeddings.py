@@ -164,8 +164,8 @@ def process(args):
     compute_embeddings(
         input_file='{}/tokens.txt'.format(args.output_path), 
         outdir=args.output_path, 
-        model='{}/{}'.format(args.model_path, pretrained_embeddings),
-        model_name=pretrained_embeddings
+        model='{}/{}'.format(args.model_path, args.pretrained_embeddings),
+        model_name=args.pretrained_embeddings
     )
 
 def compute_only_embeddings(args):
@@ -173,8 +173,8 @@ def compute_only_embeddings(args):
     compute_embeddings(
         input_file='{}'.format(args.input), 
         outdir=args.output_path, 
-        model='{}/{}'.format(args.model_path, pretrained_embeddings),
-        model_name=pretrained_embeddings,
+        model='{}/{}'.format(args.model_path, args.pretrained_embeddings),
+        model_name=args.pretrained_embeddings,
         prefix=args.prefix
     )
 
