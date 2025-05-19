@@ -65,20 +65,20 @@ class Embedder():
         
         process(self)
     
-def load_embeddings(embeddings_file):
-    ''' 
-        INPUT:
-            embeddings_file: Load embeddings from this pretrained embedder.
-            
-        RETURNS:
-            vectors: Embeddings in a numpy array.
-            sample_ids: corresponding ID of the vectors.
-    '''
-    
-    sample_ids = np.array([i.strip() for i in open("{}/samples.txt".format( "/".join(embeddings_file.split('/')[:-1]) ))])
-    vectors = np.array([i.strip().split() for i in open("{}".format(embeddings_file))])
+    def load_embeddings(self, embeddings_file):
+        ''' 
+            INPUT:
+                embeddings_file: Load embeddings from this pretrained embedder.
+                
+            RETURNS:
+                vectors: Embeddings in a numpy array.
+                sample_ids: corresponding ID of the vectors.
+        '''
+        
+        sample_ids = np.array([i.strip() for i in open("{}/samples.txt".format( "/".join(embeddings_file.split('/')[:-1]) ))])
+        vectors = np.array([i.strip().split() for i in open("{}".format(embeddings_file))])
 
-    return vectors, sample_ids
+        return vectors, sample_ids
 
 def process(args):
     if args.cores > 1:
