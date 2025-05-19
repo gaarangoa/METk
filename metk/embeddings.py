@@ -160,21 +160,21 @@ def process(args):
         logger.warning('Embeddings are not being computed, if this is not desired, please remove --no_embeddings')
         return 0
     
-    for model, model_name in [i.split(':') for i in args.pretrained_embeddings.split(',')]:
-        compute_embeddings(
-            input_file='{}/tokens.txt'.format(args.output_path), 
-            outdir=args.output_path, 
-            model='{}/{}'.format(args.model_path, model),
-            model_name=model_name
-        )
+    # for model, model_name in [i.split(':') for i in args.pretrained_embeddings.split(',')]:
+    compute_embeddings(
+        input_file='{}/tokens.txt'.format(args.output_path), 
+        outdir=args.output_path, 
+        model='{}/{}'.format(args.model_path, pretrained_embeddings),
+        model_name=pretrained_embeddings
+    )
 
 def compute_only_embeddings(args):
-    for model, model_name in [i.split(':') for i in args.pretrained_embeddings.split(',')]:
-        compute_embeddings(
-            input_file='{}'.format(args.input), 
-            outdir=args.output_path, 
-            model='{}/{}'.format(args.model_path, model),
-            model_name=model_name,
-            prefix=args.prefix
-        )
+    # for model, model_name in [i.split(':') for i in args.pretrained_embeddings.split(',')]:
+    compute_embeddings(
+        input_file='{}'.format(args.input), 
+        outdir=args.output_path, 
+        model='{}/{}'.format(args.model_path, pretrained_embeddings),
+        model_name=pretrained_embeddings,
+        prefix=args.prefix
+    )
 
