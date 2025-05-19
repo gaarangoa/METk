@@ -10,9 +10,9 @@ from .parser import variants_parser, variants_parser_large
 from .vectors import compute_embeddings
 from .parser import format_input_data
 
-log = logging.getLogger()
-log.setLevel(logging.INFO)
-log.addHandler(logging.StreamHandler(stream=sys.stdout))
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+logger.addHandler(logging.StreamHandler(stream=sys.stdout))
 
 ROOT_DIR, _ = os.path.split(__file__)
 
@@ -55,7 +55,7 @@ class EmbedDoc():
         )
 
         for _ in range(3):
-            log.info(self.model.stdout.readline().decode("utf-8").strip())
+            logger.info(self.model.stdout.readline().decode("utf-8").strip())
 
     def embed(self, input_string=''):
         ''' 
