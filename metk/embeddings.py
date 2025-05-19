@@ -16,66 +16,6 @@ logger.addHandler(logging.StreamHandler(stream=sys.stdout))
 
 ROOT_DIR, _ = os.path.split(__file__)
 
-class EmbedDoc():
-    def __init__(self, model_name):
-        ''' 
-        This Class is a wrapper for the C++ implementation of document embeddings on StarSpace to embed a document and retrieve the document embeddings. 
-        ...
-        
-        Attributes
-        ----------
-
-        model_name: str
-            Path to the pretrained model with StarSpace
-
-        
-        Methods
-        ----------
-        load()
-            Loads the pretrained StarSpace model
-
-        embed(input_string='')
-            Returns the embeddings from the pretrained model.
-
-        '''
-        self.model_name = model_name
-        self.load()
-    
-    def load(self):
-        ''' 
-        Parameters
-        ----------
-        '''
-        self.model = subprocess.Popen(
-            [ '{}/embed_doc_individual.bin'.format(ROOT_DIR), self.model_name],
-            shell=False,
-            stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE,
-            bufsize=0
-        )
-
-        for _ in range(3):
-            logger.info(self.model.stdout.readline().decode("utf-8").strip())
-
-    def embed(self, input_string=''):
-        ''' 
-        Parameters
-        ----------
-        input_string : str
-            The input string with the tokens to be processed by the model. 
-
-        Returns
-        ----------    
-        numpy array 
-            It returns a numpy array of the dimension of 
-            the embeddings defined in the pretrained model as a numpy array.
-        '''
-        code = self.model.stdin.write(str.encode("{}\n".format(input_string) ))        
-        return np.array(self.model.stdout.readline().decode("utf-8").strip().split(), dtype=float)
-    
-    def close(self, ):
-        self.model.kill()
-
 class Embedder():
     def __init__(self, path_to_reference_genomes='', path_to_trained_embeddings='', cores=10, pretrained_embeddings=''):
         
