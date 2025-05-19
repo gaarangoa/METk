@@ -149,7 +149,7 @@ class FeatureExtractor():
                 output_path = self.output_path
             )
         
-        self.deepgesture_features, self.deepgesture_ids = Embedder.load_embeddings('{}/MIX_128.wv'.format(self.output_path))
+        self.deepgesture_features, self.deepgesture_ids = dg.load_embeddings('{}/MIX_128.wv'.format(self.output_path))
         self.deepgesture_names = [ "dg_{}".format(i) for i in range(self.deepgesture_features.shape[1])]
 
         logger.info('Step 1: Feature dimension: {}'.format(self.deepgesture_features.shape))
