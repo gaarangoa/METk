@@ -67,7 +67,7 @@ class ParseVariants(object):
         logger.info("Consequence types: {}".format(self.variant_types))
 
         self.hg = {
-            'GRCh37': Fasta('{}/GRCh37.d1.vd1.fa'.format(self.args.reference_genomes)), 
+            'GRCh37': Fasta('{}/GRCh37.fa'.format(self.args.reference_genomes)), 
             'GRCh38': Fasta('{}/GRCh38.d1.vd1.fa'.format(self.args.reference_genomes))
         }
 

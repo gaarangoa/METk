@@ -91,7 +91,7 @@ snpsift_index = [
 ]
 
 class FeatureExtractor():
-    def __init__(self, db, reference_genome, identifier, variant_types, output_path, run_deepgesture=True, run_snpeff=True, run_dbnsfp=True, run_deepgesture_gene=True, run_baseline_chip=True, **kwargs):
+    def __init__(self, db, reference_genome, identifier, variant_types, output_path, run_deepgesture=True, run_snpeff=True, run_dbnsfp=True, run_deepgesture_gene=True, **kwargs):
         
         ''' 
         Feature extractor for CHIP classifier:
@@ -117,11 +117,11 @@ class FeatureExtractor():
         self.output_path = output_path
         self.identifier = identifier
 
-        self.snpeff_dir = '{}/snpEff_4_3/snpEff/snpEff.jar'.format(db)
-        self.snpsift_jar = '{}/snpEff_5_0/SnpSift.jar'.format(db)
+        self.snpeff_dir = '{}/snpEff/snpEff_4_3/snpEff/snpEff.jar'.format(db)
+        self.snpsift_jar = '{}/snpEff/snpEff_5_0/SnpSift.jar'.format(db)
         self.snpsift_db = [
-            '{}/snpEff_5_0/db/GRCh37/dbNSFP/dbNSFP4.1a.txt.gz'.format(db), 
-            '{}/snpEff_5_0/db/GRCh38/dbNSFP/dbNSFP4.1a.txt.gz'.format(db)
+            '{}/snpEff/snpEff_5_0/db/GRCh37/dbNSFP/dbNSFP4.1a.txt.gz'.format(db), 
+            '{}/snpEff/snpEff_5_0/db/GRCh38/dbNSFP/dbNSFP4.1a.txt.gz'.format(db)
         ]
         self.gene_embeddings_model = '{}/starspace/genes.tcga.model.d8.tsv'.format(db)
 
