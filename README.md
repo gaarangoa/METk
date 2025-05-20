@@ -153,4 +153,4 @@ Finally, the metk data directory should have the following structure:
 
 ## Licensing
 METk is released under the MIT licensing.
->**⚠️ IMPORTANT:** End users are responsible for checking licensing requirements of the tools used in METk (<a href="https://pcingola.github.io/SnpEff/snpsift/introduction/#download-and-install" open=blank_>snpEff</a>, <a href="https://www.dbnsfp.org/license">Legacy dbNSFP4</a>, and <a href="https://ai.meta.com/tools/starspace/">starspace</a>).
+>**⚠️ IMPORTANT:** End users are responsible for checking licensing requirements of the tools used in METk (<a href="https://pcingola.github.io/SnpEff/snpsift/introduction/#download-and-install" open=blank_>snpEff</a>, <a href="https://www.dbnsfp.org/license">Legacy dbNSFP v4.1</a>, and <a href="https://ai.meta.com/tools/starspace/">starspace</a>).
