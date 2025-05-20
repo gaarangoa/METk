@@ -123,7 +123,7 @@ pip install git+https://github.com/gaarangoa/METk.git
 ### SnpEff & SnpSift
 METk also extracts scores functional scores from snpEff (v4.3) and snpSift (v5.0).
 You need to download both versions from the <a href="https://pcingola.github.io/SnpEff/snpsift/introduction/#download-and-install" open=blank_> official website </a> with the following databases and add them to the metk data path: 
-* dbNSFP4.1a (for snpEff v5.0)
+* dbNSFP4.1a or dbNSFP4.1c (for snpEff v5.0)
 * snpEff_v4_3_GRCh37.75 (for snpEff v4.3)
 * snpEff_v4_3_GRCh38.86 (for snpEff v4.3)
 
