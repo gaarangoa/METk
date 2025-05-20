@@ -129,7 +129,6 @@ class FeatureExtractor():
         self.run_snpeff = run_snpeff
         self.run_dbnsfp = run_dbnsfp
         self.run_deepgesture_gene = run_deepgesture_gene
-        self.run_baseline_chip = run_baseline_chip
         
     def compute_deepgesture_embeddings(self, table):
         logger.info('Step 1: Extracting DeepGESTURE embeddings ...')
