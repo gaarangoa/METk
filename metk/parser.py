@@ -96,7 +96,10 @@ class ParseVariants(object):
 
     def process_core(self, ):
         
-        hg = {'GRCh37': Fasta('{}/GRCh37.d1.vd1.fa'.format(self.args.reference_genomes)),  'GRCh38': Fasta('{}/GRCh38.d1.vd1.fa'.format(self.args.reference_genomes))}
+        hg = {
+            'GRCh37': Fasta('{}/GRCh37.fa'.format(self.args.reference_genomes)),  
+            'GRCh38': Fasta('{}/GRCh38.d1.vd1.fa'.format(self.args.reference_genomes))
+            }
 
         ft = open('{}/tokens.txt'.format(self.args.output_path), 'w', encoding='utf8')
         fm = open('{}/metadata.txt'.format(self.args.output_path, ), 'w', encoding='utf8')
