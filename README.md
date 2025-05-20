@@ -120,7 +120,12 @@ docker run -it --rm \
 pip install git+https://github.com/gaarangoa/METk.git
 ```
 
-### SnpEff & SnpSift
+### Human reference genome
+Download the human reference genome version and add them to the metk data path: 
+* <a href="https://support.illumina.com/downloads/genome-fasta-files.html"> GRCh37.fa </a>
+* <a href="https://gdc.cancer.gov/about-data/gdc-data-processing/gdc-reference-files"> GRCh38.d1.vd1.fa </a>
+
+### SnpEff & SnpSift (optional)
 METk also extracts scores functional scores from snpEff (v4.3) and snpSift (v5.0).
 You need to download both versions from the <a href="https://pcingola.github.io/SnpEff/snpsift/introduction/#download-and-install" open=blank_> official website </a> with the following databases and add them to the metk data path: 
 * dbNSFP4.1a or dbNSFP4.1c (for snpEff v5.0)
@@ -128,11 +133,6 @@ You need to download both versions from the <a href="https://pcingola.github.io/
 * snpEff_v4_3_GRCh38.86 (for snpEff v4.3)
 
 To ignore SnpEff/SnpSift set ```run_snpeff=False``` and ```run_dbnsfp=False```.
-
-### Human reference genome
-Download the human reference genome version and add them to the metk data path: 
-* <a href="https://support.illumina.com/downloads/genome-fasta-files.html"> GRCh37.fa </a>
-* <a href="https://gdc.cancer.gov/about-data/gdc-data-processing/gdc-reference-files"> GRCh38.d1.vd1.fa </a>
 
 ### METK database structure
 Finally, the metk data directory should have the following structure: 
