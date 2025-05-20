@@ -130,7 +130,7 @@ You need to download both versions from the <a href="https://pcingola.github.io/
 ### Human reference genome
 Download the human reference genome version and add them to the metk data path: 
 * <a href="https://support.illumina.com/downloads/genome-fasta-files.html"> GRCh37.fa </a>
-* <a href="https://api.gdc.cancer.gov/data/254f697d-310d-4d7d-a27b-27fbf767a834"> GRCh38.d1.vd1.fa </a>
+* <a href="https://gdc.cancer.gov/about-data/gdc-data-processing/gdc-reference-files"> GRCh38.d1.vd1.fa </a>
 
 ### METK database structure
 Finally, the metk data directory should have the following structure: 
