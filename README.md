@@ -127,7 +127,7 @@ You need to download both versions from the <a href="https://pcingola.github.io/
 * snpEff_v4_3_GRCh37.75 (for snpEff v4.3)
 * snpEff_v4_3_GRCh38.86 (for snpEff v4.3)
 
-To extract only embeddings set ```run_snpeff=False``` and ```run_dbnsfp=False```.
+To ignore SnpEff/SnpSift set ```run_snpeff=False``` and ```run_dbnsfp=False```.
 
 ### Human reference genome
 Download the human reference genome version and add them to the metk data path: 
