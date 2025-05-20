@@ -1,60 +1,5 @@
 # METK: Mutational Enrichment Toolkit
 
-## Environment 
-METK uses a docker image with the relevant libraries installed. 
-
->**⚠️ Info:** We strongly recommend using docker (or singulairty) for extracting embeddings from METk.
-
-### SnpEff & SnpSift
-METk also extracts scores functional scores from snpEff (v4.3) and snpSift (v5.0).
-You need to download both versions from the <a href="https://pcingola.github.io/SnpEff/snpsift/introduction/#download-and-install" open=blank_> official website </a> with the following databases and add them to the metk data path: 
-* dbNSFP4.1a (for snpEff v5.0)
-* snpEff_v4_3_GRCh37.75 (for snpEff v4.3)
-* snpEff_v4_3_GRCh38.86 (for snpEff v4.3)
-
-### Human reference genome
-Download the human reference genome version and add them to the metk data path: 
-* <a href="">https://support.illumina.com/downloads/genome-fasta-files.html> GRCh37.fa </a>
-* <a href="">https://api.gdc.cancer.gov/data/254f697d-310d-4d7d-a27b-27fbf767a834> GRCh38.d1.vd1.fa </a>
-
-### METK database structure
-Finally, the metk data directory should have the following structure: 
-
-📁 METk/
-|-- 📁 starspace
-|   -- genes.tcga.model.d8.tsv
-|   -- dgv2.cbioportal.128.e500.bin
-|-- 📁 reference_genome
-|   -- GRCh37.fa  
-|   -- GRCh37.fa.fai  
-|   -- GRCh38.d1.vd1.fa  
-|   -- GRCh38.d1.vd1.fa.fai
-|-- 📁 snpEff
-|   -- 📁 snpEff_4_3
-|   -- 📁 snpEff_5_0
-
-### Start jupyter notebook 
-```bash 
-docker run -it --rm -p 8888:8888 gaarangoa/chip_classifier:version-4.0.0
- jupyter notebook --NotebookApp.default_url=/lab/ --ip=0.0.0.0 --port=8888 --allow-root
-```
-
-#### inside the container install METk package
-```bash
-pip install git+https://github.com/gaarangoa/METk.git
-```
-
-#### Download all relevant data
-```python
-from metk import download_resources
-
-download_resources(path='../data/metk/')
-```
-
-## Licensing
-METk is released under the MIT licensing.
->**⚠️ Info:** End users are responsible for checking licensing requirements of the tools used in METk (<a href="https://pcingola.github.io/SnpEff/snpsift/introduction/#download-and-install" open=blank_>snpEff</a>, <a href="https://www.dbnsfp.org/license">dbNSFP4</a>, <a href="https://ai.meta.com/tools/starspace/">starspace</a>).
-
 ## Usage
 ```python
 from metk.dataset import read, Dataset
@@ -152,3 +97,51 @@ data = pd.merge(data, patient_embeddings, on='Sample_ID', how='left')
 ```
 
 Finally, once you have this master table, take a look at a couple of patients and verify that you are getting the expected values. Be careful with merging tables, make sure your sample_ids are unique and represent a patient. For instance, if your dataset contains patients with different visits (DNA extractions) you may have several samples, therefore using the above code would mix all the samples in a patient. You need to consider these scenarios when doing the analysis at the patient level. 
+
+## Environment 
+METK uses a docker image with the relevant libraries installed. 
+
+>**⚠️ Info:** We strongly recommend using docker (or singulairty) for extracting embeddings from METk.
+
+### SnpEff & SnpSift
+METk also extracts scores functional scores from snpEff (v4.3) and snpSift (v5.0).
+You need to download both versions from the <a href="https://pcingola.github.io/SnpEff/snpsift/introduction/#download-and-install" open=blank_> official website </a> with the following databases and add them to the metk data path: 
+* dbNSFP4.1a (for snpEff v5.0)
+* snpEff_v4_3_GRCh37.75 (for snpEff v4.3)
+* snpEff_v4_3_GRCh38.86 (for snpEff v4.3)
+
+### Human reference genome
+Download the human reference genome version and add them to the metk data path: 
+* <a href=">https://support.illumina.com/downloads/genome-fasta-files.html"> GRCh37.fa </a>
+* <a href=">https://api.gdc.cancer.gov/data/254f697d-310d-4d7d-a27b-27fbf767a834"> GRCh38.d1.vd1.fa </a>
+
+### METK database structure
+Finally, the metk data directory should have the following structure: 
+```bash
+📁 METk/
+|-- 📁 starspace
+|   -- genes.tcga.model.d8.tsv
+|   -- dgv2.cbioportal.128.e500.bin
+|-- 📁 reference_genome
+|   -- GRCh37.fa  
+|   -- GRCh37.fa.fai  
+|   -- GRCh38.d1.vd1.fa  
+|   -- GRCh38.d1.vd1.fa.fai
+|-- 📁 snpEff
+|   -- 📁 snpEff_4_3
+|   -- 📁 snpEff_5_0
+```
+### Start jupyter notebook 
+```bash 
+docker run -it --rm -p 8888:8888 gaarangoa/chip_classifier:version-4.0.0
+ jupyter notebook --NotebookApp.default_url=/lab/ --ip=0.0.0.0 --port=8888 --allow-root
+```
+
+#### inside the container install METk package
+```bash
+pip install git+https://github.com/gaarangoa/METk.git
+```
+
+## Licensing
+METk is released under the MIT licensing.
+>**⚠️ Info:** End users are responsible for checking licensing requirements of the tools used in METk (<a href="https://pcingola.github.io/SnpEff/snpsift/introduction/#download-and-install" open=blank_>snpEff</a>, <a href="https://www.dbnsfp.org/license">dbNSFP4</a>, <a href="https://ai.meta.com/tools/starspace/">starspace</a>).
