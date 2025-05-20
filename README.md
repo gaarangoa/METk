@@ -54,8 +54,8 @@ mutation_enrichment = FeatureExtractor(
     variant_types = 'INS,DEL,SNP',
     output_path = '../data/brca/',
     mutation_model = 'dgv2.cbioportal.128.e500.bin',
-    run_snpeff=True, # set to False if not required
-    run_dbnsfp=True, # set to False if not required
+    run_snpeff=False, # set to True if required
+    run_dbnsfp=False, # set to True if required
 )
 mutation_enrichment.extract_features(table)
 ```
