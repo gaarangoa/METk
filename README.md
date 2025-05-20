@@ -156,4 +156,4 @@ This software includes third-party components that are governed by separate lice
 
 While this tool is distributed under the MIT License (see LICENSE file), some included components are licensed under more restrictive terms, including non-commercial licenses.
 
->**⚠️ IMPORTANT:** Users are responsible for reviewing and complying with the licenses of all third-party components used by this MetK (<a href="https://pcingola.github.io/SnpEff/snpsift/introduction/#download-and-install" open=blank_>snpEff</a>, <a href="https://www.dbnsfp.org/license">Legacy dbNSFP v4.1</a>, and <a href="https://ai.meta.com/tools/starspace/">starspace</a>).
+>**⚠️ IMPORTANT:** Users are responsible for reviewing and complying with the licenses of all third-party components used by METk (<a href="https://pcingola.github.io/SnpEff/snpsift/introduction/#download-and-install" open=blank_>snpEff</a>, <a href="https://www.dbnsfp.org/license">Legacy dbNSFP v4.1</a>, and <a href="https://ai.meta.com/tools/starspace/">starspace</a>).
