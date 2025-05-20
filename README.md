@@ -98,10 +98,25 @@ data = pd.merge(data, patient_embeddings, on='Sample_ID', how='left')
 
 Finally, once you have this master table, take a look at a couple of patients and verify that you are getting the expected values. Be careful with merging tables, make sure your sample_ids are unique and represent a patient. For instance, if your dataset contains patients with different visits (DNA extractions) you may have several samples, therefore using the above code would mix all the samples in a patient. You need to consider these scenarios when doing the analysis at the patient level. 
 
-## Environment 
+## Setup
+### Environment 
 METK uses a docker image with the relevant libraries installed. 
-
 >**⚠️ Info:** We strongly recommend using docker (or singulairty) for extracting embeddings from METk.
+
+### Start jupyter notebook 
+```bash 
+docker run -it --rm \
+    -p 8888:8888 \
+    -v /path/to/metk/:/METk/ \
+    -v /path/to/data/:/data/ \
+    gaarangoa/chip_classifier:version-4.0.0 \
+    jupyter notebook --NotebookApp.default_url=/lab/ --ip=0.0.0.0 --port=8888 --allow-root
+```
+
+#### inside the container install METk package
+```bash
+pip install git+https://github.com/gaarangoa/METk.git
+```
 
 ### SnpEff & SnpSift
 METk also extracts scores functional scores from snpEff (v4.3) and snpSift (v5.0).
@@ -131,17 +146,7 @@ Finally, the metk data directory should have the following structure:
 |   -- 📁 snpEff_4_3
 |   -- 📁 snpEff_5_0
 ```
-### Start jupyter notebook 
-```bash 
-docker run -it --rm -p 8888:8888 gaarangoa/chip_classifier:version-4.0.0
- jupyter notebook --NotebookApp.default_url=/lab/ --ip=0.0.0.0 --port=8888 --allow-root
-```
-
-#### inside the container install METk package
-```bash
-pip install git+https://github.com/gaarangoa/METk.git
-```
 
 ## Licensing
 METk is released under the MIT licensing.
->**⚠️ Info:** End users are responsible for checking licensing requirements of the tools used in METk (<a href="https://pcingola.github.io/SnpEff/snpsift/introduction/#download-and-install" open=blank_>snpEff</a>, <a href="https://www.dbnsfp.org/license">dbNSFP4</a>, <a href="https://ai.meta.com/tools/starspace/">starspace</a>).
+>**⚠️ IMPORTANT:** End users are responsible for checking licensing requirements of the tools used in METk (<a href="https://pcingola.github.io/SnpEff/snpsift/introduction/#download-and-install" open=blank_>snpEff</a>, <a href="https://www.dbnsfp.org/license">dbNSFP4</a>, and <a href="https://ai.meta.com/tools/starspace/">starspace</a>).
