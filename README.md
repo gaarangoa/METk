@@ -54,8 +54,8 @@ mutation_enrichment = FeatureExtractor(
     variant_types = 'INS,DEL,SNP',
     output_path = '../data/brca/',
     mutation_model = 'dgv2.cbioportal.128.e500.bin',
-    run_snpeff=True, 
-    run_dbnsfp=True, 
+    run_snpeff=True, # set to False if not required
+    run_dbnsfp=True, # set to False if not required
 )
 mutation_enrichment.extract_features(table)
 ```
@@ -126,6 +126,8 @@ You need to download both versions from the <a href="https://pcingola.github.io/
 * dbNSFP4.1a (for snpEff v5.0)
 * snpEff_v4_3_GRCh37.75 (for snpEff v4.3)
 * snpEff_v4_3_GRCh38.86 (for snpEff v4.3)
+
+To extract only embeddings set ```run_snpeff=False``` and ```run_dbnsfp=False```.
 
 ### Human reference genome
 Download the human reference genome version and add them to the metk data path: 
