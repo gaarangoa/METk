@@ -169,4 +169,4 @@ Finally, the metk data directory should have the following structure:
 ## Licensing
 This software includes third-party components that are governed by separate license terms:
 
->**⚠️ IMPORTANT:** Users are responsible for reviewing and complying with the licenses of all third-party components used by METk (<a href="https://pcingola.github.io/SnpEff/snpsift/introduction/#download-and-install" open=blank_>snpEff</a>, <a href="https://zenodo.org/records/4323592#.X9zPhNhKiHs">Legacy dbNSFP v4.1</a> and <a href='https://www.dbnsfp.org/license'>here</a>, and <a href="https://ai.meta.com/tools/starspace/">starspace</a>).
+>**⚠️ IMPORTANT:** Users are responsible for reviewing and complying with the licenses of all third-party components used by METk (<a href="https://pcingola.github.io/SnpEff/snpsift/introduction/#download-and-install" open=blank_>snpEff</a>, <a href="https://sites.google.com/site/jpopgen/dbNSFP">Legacy dbNSFP v4.1</a> and <a href='https://www.dbnsfp.org/license'>here</a>, and <a href="https://ai.meta.com/tools/starspace/">starspace</a>).

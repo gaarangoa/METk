@@ -160,21 +160,19 @@ class FeatureExtractor():
         
         database = 'GRCh37.75' if self.reference_genome == 'GRCh37' else 'GRCh38.86'
         
+        self.snpeff_features = np.array([])
         if self.run_snpeff:
             snpeff_data = snpeff.call(infile='{}/deepgesture.vcf'.format(self.output_path), database=database) 
-        else:
-            snpeff_data = snpeff.load_results(infile='{}/deepgesture.vcf'.format(self.output_path), database=database)
-
-        self.snpeff_ids = snpeff_data['var_id']
+            self.snpeff_ids = snpeff_data['var_id']
         
-        for key in snpeff_items:
-            try:
-                snpeff_data[key]
-            except:
-                snpeff_data[key] = 0
+            for key in snpeff_items:
+                try:
+                    snpeff_data[key]
+                except:
+                    snpeff_data[key] = 0
 
-        self.snpeff_features = np.array(snpeff_data[snpeff_items], dtype=float)
-        self.snpeff_names = snpeff_items
+            self.snpeff_features = np.array(snpeff_data[snpeff_items], dtype=float)
+            self.snpeff_names = snpeff_items
 
         logger.info('Step 2: Feature dimension: {}'.format(self.snpeff_features.shape))
         
@@ -182,6 +180,7 @@ class FeatureExtractor():
         logger.info('Step 3: Extracting DbnSPF features ...')
         dbnspf = DbnSPF( jar = self.snpsift_jar, )
 
+        self.snpsift_features = np.array([])
         if self.run_dbnsfp:
             snpsift = dbnspf.score(
                 vcf='{}/deepgesture.vcf'.format(self.output_path),
@@ -189,18 +188,11 @@ class FeatureExtractor():
                 outpath = self.output_path
             )
 
-        else:
-            snpsift = dbnspf.match_ids(
-                dbnspf.format_call( "{out}/deepgesture.vcf.dbnspf.ann".format(out=self.output_path)),
-                '{}/deepgesture.vcf'.format(self.output_path),
-            )
-
-
-        self.snpsift_features = np.array(snpsift[snpsift_index], dtype=float)
-        self.snpsift_ids = snpsift.iloc[:, :5]
-        self.snpsift_names = snpsift_index
-        
-        logger.info('Step 3: Feature dimension: {}'.format(self.snpsift_features.shape))
+            self.snpsift_features = np.array(snpsift[snpsift_index], dtype=float)
+            self.snpsift_ids = snpsift.iloc[:, :5]
+            self.snpsift_names = snpsift_index
+            
+            logger.info('Step 3: Feature dimension: {}'.format(self.snpsift_features.shape))
 
     def compute_gene_embeddings(self, table):
         logger.info('Step 4: Extracting Individual Gene features ...')
@@ -237,10 +229,18 @@ class FeatureExtractor():
             dtype=float
         )
         
+        snpeff_names = []
+        if self.run_snpeff:
+            snpeff_names = self.snpeff_names
+
+        snpsift_names = []
+        if self.run_dbnsfp:
+            snpsift_names += self.snpsift_names
+
         pickle.dump(
             [
                 self.dataset, 
-                self.deepgesture_names + self.gene_feature_names  + self.snpeff_names + self.snpsift_names, 
+                self.deepgesture_names + self.gene_feature_names  + snpeff_names + snpsift_names, 
                 table
             ], 
             open("{}/mutation_features.pk".format(self.output_path), 'wb'), 
