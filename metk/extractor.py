@@ -51,19 +51,18 @@ snpeff_items = [
  ]
 
 snpsift_index = [
-    'dbNSFP_BayesDel_addAF_rankscore',
-    'dbNSFP_BayesDel_noAF_rankscore',
-    'dbNSFP_CADD_raw_rankscore',
-    'dbNSFP_ClinPred_rankscore',
-    'dbNSFP_DANN_rankscore',
+    'dbNSFP_BayesDel_addAF_rankscore', 
+    'dbNSFP_BayesDel_noAF_rankscore', 
+    'dbNSFP_DANN_rankscore', 
     'dbNSFP_Eigen_PC_raw_coding_rankscore',
     'dbNSFP_Eigen_raw_coding_rankscore',
+    'dbNSFP_ExAC_AF',
+    'dbNSFP_ExAC_nonTCGA_AF',
     'dbNSFP_FATHMM_converted_rankscore',
     'dbNSFP_GERP___NR',
     'dbNSFP_GERP___RS',
     'dbNSFP_GERP___RS_rankscore',
     'dbNSFP_GM12878_fitCons_score',
-    'dbNSFP_GenoCanyon_score',
     'dbNSFP_H1_hESC_fitCons_score',
     'dbNSFP_M_CAP_score',
     'dbNSFP_MVP_rankscore',
@@ -71,24 +70,22 @@ snpsift_index = [
     'dbNSFP_MetaSVM_rankscore',
     'dbNSFP_MutationTaster_converted_rankscore',
     'dbNSFP_PROVEAN_converted_rankscore',
-    'dbNSFP_REVEL_rankscore',
     'dbNSFP_SIFT4G_converted_rankscore',
     'dbNSFP_SiPhy_29way_logOdds_rankscore',
-    'dbNSFP_VEST4_rankscore',
     'dbNSFP_bStatistic_converted_rankscore',
     'dbNSFP_fathmm_MKL_coding_rankscore',
     'dbNSFP_fathmm_XF_coding_rankscore',
     'dbNSFP_fathmm_XF_coding_score',
+    'dbNSFP_gnomAD_exomes_AF',
     'dbNSFP_integrated_fitCons_rankscore',
     'dbNSFP_phastCons100way_vertebrate',
     'dbNSFP_phastCons30way_mammalian',
     'dbNSFP_DEOGEN2_rankscore',
     'dbNSFP_LRT_converted_rankscore',
-    'dbNSFP_MutPred_score',
     'dbNSFP_MutationAssessor_rankscore',
-    'dbNSFP_Polyphen2_HDIV_rankscore',
-    'dbNSFP_Polyphen2_HVAR_rankscore'
 ]
+
+
 
 class FeatureExtractor():
     def __init__(self, db, reference_genome, identifier, variant_types, output_path, run_deepgesture=True, run_snpeff=True, run_dbnsfp=True, run_deepgesture_gene=True, **kwargs):
