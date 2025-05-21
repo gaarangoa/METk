@@ -109,11 +109,10 @@ corrected.
 context_sequences = pd.read_csv('../data/brca/metk/metadata.txt', sep='\t')
 context = context_sequences[['Chromosome', 'Start_Position', 'Reference_Allele', 'Tumor_Allele_1', 'Tumor_Allele_2', 'context']]
 context['context'] = [f"{i[:10]} {i[10:-10]} {i[-10:]}" for i in context.context]
+context.head()
 ```
 
-``python
-context
-
+``bash
 Chromosome	Start_Position	Reference_Allele	Tumor_Allele_1	Tumor_Allele_2	context
 0	3	132047117	C	C	T	TCAGGTGTTT C GGCATGGAGA
 1	X	110951473	T	T	C	ACCCCCACCC T GTACAAAATG
@@ -123,7 +122,6 @@ Chromosome	Start_Position	Reference_Allele	Tumor_Allele_1	Tumor_Allele_2	context
 5	19	48821779	G	G	A	TCTGGGCTGC G CTGATCTGCA
 6	16	68862076	G	G	T	CACCATCCCA G TTCTGATTCT
 7	17	1340206	C	C	T	AGGCTTGTCC C GGATTCTCAA
-
 ```
 
 ## Setup
