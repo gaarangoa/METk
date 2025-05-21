@@ -10,7 +10,7 @@ import pickle
 ### Preprocess dataset
 We need to make sure to have our dataset in the right format. METK uses the convention from cbiportal as the standard way to store the data. If your input dataset is not in the cbio format, you need to have at least the following minimal data schema (columns). 
 
->**⚠️ IMPORTANT:** Your data has to be 0-based following cbioportal MAF convention. see **validate my input data** section.
+>**⚠️ IMPORTANT:** Make sure your data loci is correct. To do so see **validate my input data** section.
 
 ```python 
 # Define table schema
@@ -121,6 +121,7 @@ context.head()
 | 19         | 48821779       | G                | G              | A              | TCTGGGCTGC    | G      | CTGATCTGCA    |
 | 16         | 68862076       | G                | G              | T              | CACCATCCCA    | G      | TTCTGATTCT    |
 
+For first variant, ```chr3:132,047,107-132,047,127``` you can also inspect and visualize the proper match / context in the <a href='https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr3%3A132047107%2D132047127&hgsid=2586332102_9UY2g12sf9AKoKeCCWTBMTXYZeqa'> ucsc genome browser </a>
 
 ## Setup
 ### Environment 
