@@ -218,17 +218,21 @@ class FeatureExtractor():
         self.compute_snpeff_features()
         self.compute_dbnsfp_features()
         self.compute_gene_embeddings(table)
+
+        if self.run_snpeff and self.run_dbnsfp:            
+            self.dataset = np.array(np.concatenate([self.deepgesture_features, self.gene_features, self.snpeff_features, self.snpsift_features], axis=1), dtype=float)
         
-        self.dataset = np.array(
-            np.concatenate([
-                self.deepgesture_features, 
-                self.gene_features, 
-                self.snpeff_features,
-                self.snpsift_features
-            ], axis=1),
-            dtype=float
-        )
+        elif self.run_snpeff and not self.run_dbnsfp:            
+            self.dataset = np.array(np.concatenate([self.deepgesture_features, self.gene_features, self.snpeff_features], axis=1), dtype=float)
         
+        elif not self.run_snpeff and self.run_dbnsfp:            
+            self.dataset = np.array(np.concatenate([self.deepgesture_features, self.gene_features, self.snpsift_features], axis=1), dtype=float)
+        
+        elif not self.run_snpeff and not self.run_dbnsfp:            
+            self.dataset = np.array(np.concatenate([self.deepgesture_features, self.gene_features], axis=1), dtype=float)
+        else:
+            raise Exception('No features were extracted. Please check your input data.')
+
         snpeff_names = []
         if self.run_snpeff:
             snpeff_names = self.snpeff_names
