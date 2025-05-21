@@ -10,7 +10,7 @@ import pickle
 ### Preprocess dataset
 We need to make sure to have our dataset in the right format. METK uses the convention from cbiportal as the standard way to store the data. If your input dataset is not in the cbio format, you need to have at least the following minimal data schema (columns). 
 
->**⚠️ Warning:** Your data has to be 0-based following cbioportal convention, if it is not, the results will not be correct. 
+>**⚠️ IMPORTANT:** Your data has to be 0-based following cbioportal MAF convention. see **validate my input data** section.
 
 ```python 
 # Define table schema
@@ -100,6 +100,32 @@ data = pd.merge(data, patient_embeddings, on='Sample_ID', how='left')
 
 Finally, once you have this master table, take a look at a couple of patients and verify that you are getting the expected values. Be careful with merging tables, make sure your sample_ids are unique and represent a patient. For instance, if your dataset contains patients with different visits (DNA extractions) you may have several samples, therefore using the above code would mix all the samples in a patient. You need to consider these scenarios when doing the analysis at the patient level. 
 
+## How to validate my input data
+METk generates an auxiliary file that has the extracted context from the human genome, if everything goes well your reference allele should 
+match the reference allele on the extracted sequence. If there is a mismatch, it means that your chromosome positions are shifted and need to be
+corrected.
+
+```python
+context_sequences = pd.read_csv('../data/brca/metk/metadata.txt', sep='\t')
+context = context_sequences[['Chromosome', 'Start_Position', 'Reference_Allele', 'Tumor_Allele_1', 'Tumor_Allele_2', 'context']]
+context['context'] = [f"{i[:10]} {i[10:-10]} {i[-10:]}" for i in context.context]
+```
+
+``python
+context
+
+Chromosome	Start_Position	Reference_Allele	Tumor_Allele_1	Tumor_Allele_2	context
+0	3	132047117	C	C	T	TCAGGTGTTT C GGCATGGAGA
+1	X	110951473	T	T	C	ACCCCCACCC T GTACAAAATG
+2	1	104166496	T	T	C	AGGATGTTAA T GATTGGGTTG
+3	9	33135286	T	T	C	GGTTGCGGAA T GGAATGATGA
+4	5	40841761	A	A	C	TTGCGGCTTA A GGCATGGTAA
+5	19	48821779	G	G	A	TCTGGGCTGC G CTGATCTGCA
+6	16	68862076	G	G	T	CACCATCCCA G TTCTGATTCT
+7	17	1340206	C	C	T	AGGCTTGTCC C GGATTCTCAA
+
+```
+
 ## Setup
 ### Environment 
 METK uses a docker image with the relevant libraries installed. 
@@ -122,8 +148,8 @@ pip install git+https://github.com/gaarangoa/METk.git
 
 ### Download METk embeddings
 Download the METk models and add them to the metk data path:
-<a href="https://zenodo.org/records/15484265/files/dgv2.cbioportal.128.e500.bin?download=1&preview=1"> METK mutational embeddings model </a>
-<a href="https://zenodo.org/records/15484265/files/genes.tcga.model.d8.tsv?download=1&preview=1"> METK gene embeddings model </a>
+* <a href="https://zenodo.org/records/15484265/files/dgv2.cbioportal.128.e500.bin?download=1&preview=1"> METK mutational embeddings model </a>
+* <a href="https://zenodo.org/records/15484265/files/genes.tcga.model.d8.tsv?download=1&preview=1"> METK gene embeddings model </a>
 
 ### Human reference genome
 Download the human reference genomes version and add them to the metk data path: 
