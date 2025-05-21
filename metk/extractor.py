@@ -10,14 +10,7 @@ from .dbnspf import DbnSPF
 
 import logging
 
-
-
 logger = logging.getLogger()
-logger.basicConfig(
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S',
-    level=logging.INFO
-)
 
 snpeff_items = [
     'LOF',
