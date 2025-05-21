@@ -101,9 +101,8 @@ data = pd.merge(data, patient_embeddings, on='Sample_ID', how='left')
 Finally, once you have this master table, take a look at a couple of patients and verify that you are getting the expected values. Be careful with merging tables, make sure your sample_ids are unique and represent a patient. For instance, if your dataset contains patients with different visits (DNA extractions) you may have several samples, therefore using the above code would mix all the samples in a patient. You need to consider these scenarios when doing the analysis at the patient level. 
 
 ## How to validate my input data
-METk generates an auxiliary file that has the extracted context from the human genome, if everything goes well your reference allele should 
-match the reference allele on the extracted sequence. If there is a mismatch, it means that your chromosome positions are shifted and need to be
-corrected.
+METk generates an auxiliary file that has the extracted context from the human genome, the reference allele should 
+match the centered allele on the extracted sequence with left and right context. If there is a mismatch, it means that your chromosome positions are shifted and need to be corrected. Here is a code snippet for doing that:
 
 ```python
 context_sequences = pd.read_csv('../data/brca/metk/metadata.txt', sep='\t')
@@ -113,15 +112,15 @@ context.head()
 ```
 
 ```bash
-Chromosome	Start_Position	Reference_Allele	Tumor_Allele_1	Tumor_Allele_2	context
-0	3	132047117	C	C	T	TCAGGTGTTT C GGCATGGAGA
-1	X	110951473	T	T	C	ACCCCCACCC T GTACAAAATG
-2	1	104166496	T	T	C	AGGATGTTAA T GATTGGGTTG
-3	9	33135286	T	T	C	GGTTGCGGAA T GGAATGATGA
-4	5	40841761	A	A	C	TTGCGGCTTA A GGCATGGTAA
-5	19	48821779	G	G	A	TCTGGGCTGC G CTGATCTGCA
-6	16	68862076	G	G	T	CACCATCCCA G TTCTGATTCT
-7	17	1340206	C	C	T	AGGCTTGTCC C GGATTCTCAA
+Chromosome	    Start_Position	Reference_Allele	Tumor_Allele_1	    Tumor_Allele_2	    left       center  right
+3	            132047117	    C	                C	                T	                TCAGGTGTTT    C    GGCATGGAGA
+X	            110951473	    T	                T	                C	                ACCCCCACCC    T    GTACAAAATG
+1	            104166496	    T	                T	                C	                AGGATGTTAA    T    GATTGGGTTG
+9	            33135286	    T	                T	                C	                GGTTGCGGAA    T    GGAATGATGA
+5	            40841761	    A	                A	                C	                TTGCGGCTTA    A    GGCATGGTAA
+19	            48821779	    G	                G	                A	                TCTGGGCTGC    G    CTGATCTGCA
+16	            68862076	    G	                G	                T	                CACCATCCCA    G    TTCTGATTCT
+17	            1340206	        C	                C	                T	                AGGCTTGTCC    C    GGATTCTCAA
 ```
 
 ## Setup
