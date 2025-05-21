@@ -110,7 +110,7 @@ context = context_sequences[['Chromosome', 'Start_Position', 'Reference_Allele',
 context['context'] = [f"{i[:10]} {i[10:-10]} {i[-10:]}" for i in context.context]
 context.head()
 ```
-<div style="font-size: x-small;"
+
 | Chromosome | Start_Position | Reference_Allele | Tumor_Allele_1 | Tumor_Allele_2 |     left      | center |     right     |
 |------------|----------------|------------------|----------------|----------------|---------------|--------|---------------|
 | 3          | 132047117      | C                | C              | T              | TCAGGTGTTT    | C      | GGCATGGAGA    |
@@ -121,7 +121,6 @@ context.head()
 | 19         | 48821779       | G                | G              | A              | TCTGGGCTGC    | G      | CTGATCTGCA    |
 | 16         | 68862076       | G                | G              | T              | CACCATCCCA    | G      | TTCTGATTCT    |
 
-</div>
 
 ## Setup
 ### Environment 
