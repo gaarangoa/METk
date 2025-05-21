@@ -121,8 +121,6 @@ context.head()
 | 19         | 48821779       | G                | G              | A              | TCTGGGCTGC    | G      | CTGATCTGCA    |
 | 16         | 68862076       | G                | G              | T              | CACCATCCCA    | G      | TTCTGATTCT    |
 
-For first variant, ```chr3:132,047,107-132,047,127``` you can also inspect and visualize the proper match / context in the <a href='https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr3%3A132047107%2D132047127&hgsid=2586332102_9UY2g12sf9AKoKeCCWTBMTXYZeqa'> ucsc genome browser </a>
-
 ## Setup
 ### Environment 
 METK uses a docker image with the relevant libraries installed. 
