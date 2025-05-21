@@ -120,15 +120,21 @@ docker run -it --rm \
 pip install git+https://github.com/gaarangoa/METk.git
 ```
 
+### Download METk embeddings
+Download the METk models and add them to the metk data path:
+<a href="https://zenodo.org/records/15484265/files/dgv2.cbioportal.128.e500.bin?download=1&preview=1"> METK mutational embeddings model </a>
+<a href="https://zenodo.org/records/15484265/files/genes.tcga.model.d8.tsv?download=1&preview=1"> METK gene embeddings model </a>
+
 ### Human reference genome
-Download the human reference genome version and add them to the metk data path: 
-* <a href="https://support.illumina.com/downloads/genome-fasta-files.html"> GRCh37.fa </a>
-* <a href="https://gdc.cancer.gov/about-data/gdc-data-processing/gdc-reference-files"> GRCh38.d1.vd1.fa </a>
+Download the human reference genomes version and add them to the metk data path: 
+* <a href="https://zenodo.org/records/15484265/files/reference_genome.tar.gz?download=1&preview=1"> reference genomes </a>
 
 ### SnpEff & SnpSift (optional)
+You can skip this step if you are interested on getting only embeddings.
+
 METk also extracts scores functional scores from snpEff (v4.3) and snpSift (v5.0).
 You need to download both versions from the <a href="https://pcingola.github.io/SnpEff/snpsift/introduction/#download-and-install" open=blank_> official website </a> with the following databases and add them to the metk data path: 
-* dbNSFP4.1a or dbNSFP4.1c (for snpEff v5.0)
+* <a href="https://zenodo.org/records/4323592#.X9zPhNhKiHs">dbNSFP4.1a or dbNSFP4.1c</a> (for snpEff v5.0)
 * snpEff_v4_3_GRCh37.75 (for snpEff v4.3)
 * snpEff_v4_3_GRCh38.86 (for snpEff v4.3)
 
@@ -146,14 +152,21 @@ Finally, the metk data directory should have the following structure:
 |   -- GRCh37.fa.fai  
 |   -- GRCh38.d1.vd1.fa  
 |   -- GRCh38.d1.vd1.fa.fai
-|-- 📁 snpEff
-|   -- 📁 snpEff_4_3
+|-- 📁 snpEff (optional)
 |   -- 📁 snpEff_5_0
+|      -- 📁 db
+|         -- 📁 GRCh37
+|            -- 📁 dbNSFP
+|         -- 📁 GRCh38
+|            -- 📁 dbNSFP
+|   -- 📁 snpEff_4_3
+|      -- 📁 snpEff
+|         -- 📁 data
+|            -- 📁 GRCh37.75
+|            -- 📁 GRCh38.86
 ```
 
 ## Licensing
-This software includes third-party components that are governed by separate license terms
+This software includes third-party components that are governed by separate license terms:
 
-While this tool is distributed under the MIT License (see LICENSE file), some included components are licensed under more restrictive terms, including non-commercial licenses.
-
->**⚠️ IMPORTANT:** Users are responsible for reviewing and complying with the licenses of all third-party components used by METk (<a href="https://pcingola.github.io/SnpEff/snpsift/introduction/#download-and-install" open=blank_>snpEff</a>, <a href="https://www.dbnsfp.org/license">Legacy dbNSFP v4.1</a>, and <a href="https://ai.meta.com/tools/starspace/">starspace</a>).
+>**⚠️ IMPORTANT:** Users are responsible for reviewing and complying with the licenses of all third-party components used by METk (<a href="https://pcingola.github.io/SnpEff/snpsift/introduction/#download-and-install" open=blank_>snpEff</a>, <a href="https://zenodo.org/records/4323592#.X9zPhNhKiHs">Legacy dbNSFP v4.1</a> and <a href='https://www.dbnsfp.org/license'>here</a>, and <a href="https://ai.meta.com/tools/starspace/">starspace</a>).

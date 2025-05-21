@@ -15,6 +15,6 @@ setup(
     },
     include_package_data=True,
     package_data={
-        'metk': ['embed_doc']
+        'metk': ['embed_doc'],
     },
 )
