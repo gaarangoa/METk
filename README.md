@@ -111,16 +111,16 @@ context['context'] = [f"{i[:10]} {i[10:-10]} {i[-10:]}" for i in context.context
 context.head()
 ```
 
-```bash
-Chromosome	    Start_Position	Reference_Allele	Tumor_Allele_1	    Tumor_Allele_2	    left       center  right
-3	            132047117	    C	                C	                T	                TCAGGTGTTT    C    GGCATGGAGA
-X	            110951473	    T	                T	                C	                ACCCCCACCC    T    GTACAAAATG
-1	            104166496	    T	                T	                C	                AGGATGTTAA    T    GATTGGGTTG
-9	            33135286	    T	                T	                C	                GGTTGCGGAA    T    GGAATGATGA
-5	            40841761	    A	                A	                C	                TTGCGGCTTA    A    GGCATGGTAA
-19	            48821779	    G	                G	                A	                TCTGGGCTGC    G    CTGATCTGCA
-16	            68862076	    G	                G	                T	                CACCATCCCA    G    TTCTGATTCT
-```
+| Chromosome | Start_Position | Reference_Allele | Tumor_Allele_1 | Tumor_Allele_2 |     left      | center |     right     |
+|------------|----------------|------------------|----------------|----------------|---------------|--------|---------------|
+| 3          | 132047117      | C                | C              | T              | TCAGGTGTTT    | C      | GGCATGGAGA    |
+| X          | 110951473      | T                | T              | C              | ACCCCCACCC    | T      | GTACAAAATG    |
+| 1          | 104166496      | T                | T              | C              | AGGATGTTAA    | T      | GATTGGGTTG    |
+| 9          | 33135286       | T                | T              | C              | GGTTGCGGAA    | T      | GGAATGATGA    |
+| 5          | 40841761       | A                | A              | C              | TTGCGGCTTA    | A      | GGCATGGTAA    |
+| 19         | 48821779       | G                | G              | A              | TCTGGGCTGC    | G      | CTGATCTGCA    |
+| 16         | 68862076       | G                | G              | T              | CACCATCCCA    | G      | TTCTGATTCT    |
+
 
 ## Setup
 ### Environment 
