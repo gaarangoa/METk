@@ -111,7 +111,7 @@ context['context'] = [f"{i[:10]} {i[10:-10]} {i[-10:]}" for i in context.context
 context.head()
 ```
 
-```python
+```bash
 Chromosome	    Start_Position	Reference_Allele	Tumor_Allele_1	    Tumor_Allele_2	    left       center  right
 3	            132047117	    C	                C	                T	                TCAGGTGTTT    C    GGCATGGAGA
 X	            110951473	    T	                T	                C	                ACCCCCACCC    T    GTACAAAATG
